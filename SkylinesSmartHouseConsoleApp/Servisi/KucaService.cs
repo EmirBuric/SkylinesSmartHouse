@@ -5,7 +5,7 @@ using SkylinesSmartHouseConsoleApp.Pretrazi;
 
 namespace SkylinesSmartHouseConsoleApp.Servisi
 {
-    public class KucaService:BaseService<Kuca,KucaPretraga,KucaDodaj,KucaAzuriraj>,IKucaSevice
+    public class KucaService:BaseService<Kuca,KucaPretraga,KucaDodaj,KucaAzuriraj>,IKucaService
     {
         protected override int GetId(Kuca model)
         {

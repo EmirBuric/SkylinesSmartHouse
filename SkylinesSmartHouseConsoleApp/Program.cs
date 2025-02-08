@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using SkylinesSmartHouseConsoleApp.Azuriraj;
+using SkylinesSmartHouseConsoleApp.Controller;
 using SkylinesSmartHouseConsoleApp.Dodaj;
 using SkylinesSmartHouseConsoleApp.Modeli;
 using SkylinesSmartHouseConsoleApp.Pretrazi;
@@ -14,99 +15,52 @@ public class Program
     {
         var service = new ServiceCollection();
 
-        service.AddTransient<KucaService>();
+        service.AddTransient<IKucaService, KucaService>();
+        service.AddTransient<KucaController>();
 
         var serviceProvider = service.BuildServiceProvider();
 
         var scope = serviceProvider.CreateScope();
 
-        var kucaServis = scope.ServiceProvider.GetRequiredService<KucaService>();
+        var kuca = scope.ServiceProvider.GetRequiredService<KucaController>();
 
-        var dodajKucu = new KucaDodaj();
 
-        Console.WriteLine("Zdravo, unesite naziv kuce: ");
-        dodajKucu.Naziv = Console.ReadLine();
-        while (string.IsNullOrEmpty(dodajKucu.Naziv)) 
+       
+
+       
+
+        bool exit=false;
+
+        while(!exit)
         {
-            Console.WriteLine("Molimo Vas da unesete naziv");
-            dodajKucu.Naziv = Console.ReadLine();
-        }
-        Console.WriteLine("Unesite povsinu u m^2");
-        string unosDodaj= Console.ReadLine();
-        int tempDodajPov;
-        while (!Int32.TryParse(unosDodaj, out tempDodajPov))
-        {
-            Console.WriteLine("Molimo Vas da unesete povrsinu");
-            unosDodaj = Console.ReadLine();
-        }
-        dodajKucu.Povrsina = tempDodajPov;
+            Console.WriteLine("Odaberite opciju");
+            Console.WriteLine("1. Dodaj kucu");
+            Console.WriteLine("2. Pretraga");
+            Console.WriteLine("3. Azuriraj kucu");
+            Console.WriteLine("4. Izlaz");
+            string opcija = Console.ReadLine();
 
-        kucaServis.Insert(dodajKucu);
-
-        kucaServis.Insert(new KucaDodaj
-        {
-            Naziv = "Moja Kuca",
-            Povrsina = 123
-        });
-
-        kucaServis.Insert(new KucaDodaj
-        {
-            Naziv = "Moja Kuca 1",
-            Povrsina = 124
-        });
-
-        var pretraga= new KucaPretraga();
-        Console.WriteLine("Pretrazite kuce po nazivu");
-        pretraga.Naziv = Console.ReadLine();
-        while (string.IsNullOrEmpty(pretraga.Naziv))
-        {
-            Console.WriteLine("Molimo Vas da unesete naziv");
-            pretraga.Naziv = Console.ReadLine();
+            switch (opcija)
+            {
+                case "1":
+                    kuca.Dodaj();
+                    break;
+                case "2":
+                    kuca.Pretraga();
+                    break;
+                case "3":
+                    kuca.Azuriraj();
+                    break;
+                case "4":
+                    exit=true;
+                    break;
+                default:
+                    Console.WriteLine("Pogresan unos");
+                    break;
+            }
         }
 
+        
 
-        var kuce = kucaServis.GetSearchRes(pretraga);
-
-        foreach (Kuca kuca1 in kuce)
-        {
-            Console.WriteLine($"Kuća dodata,GetSearch: {kuca1.Naziv}, {kuca1.Povrsina} m^2, Id:{kuca1.Id}");
-        }
-
-        var update = new KucaAzuriraj();
-
-        Console.WriteLine("Azuriranje kuce");
-        Console.WriteLine("Unesite Id kuce koju zelite azurirat");
-        string unosId= Console.ReadLine();
-        int tempId;
-        while (!Int32.TryParse(unosId, out tempId))
-        {
-            Console.WriteLine("Molimo Vas da unesete Id");
-            unosId = Console.ReadLine();
-        }
-        int id = tempId;
-
-        Console.WriteLine("Unesite novi naziv kuce: ");
-        update.Naziv = Console.ReadLine();
-        while (string.IsNullOrEmpty(update.Naziv))
-        {
-            Console.WriteLine("Molimo Vas da unesete naziv");
-            update.Naziv = Console.ReadLine();
-        }
-        int tempUpdatePov;
-        Console.WriteLine("Unesite povsinu u m^2");
-        string unosUpdatePov = Console.ReadLine();
-        while (!Int32.TryParse(unosUpdatePov, out tempUpdatePov))
-        {
-            Console.WriteLine("Molimo Vas da unesete povrsinu");
-            unosUpdatePov = Console.ReadLine();
-        }
-        update.Povrsina = tempUpdatePov;
-
-
-        kucaServis.Update(tempId, update);
-
-        var kuca= kucaServis.GetById(tempId);
-
-        Console.WriteLine($"Kuća update,getById: {kuca.Naziv}, {kuca.Povrsina} m^2");
     }
 }

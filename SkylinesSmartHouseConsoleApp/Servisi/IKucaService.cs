@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace SkylinesSmartHouseConsoleApp.Servisi
 {
-    public interface IKucaSevice:IService<Kuca,KucaPretraga,KucaDodaj,KucaAzuriraj>
+    public interface IKucaService:IService<Kuca,KucaPretraga,KucaDodaj,KucaAzuriraj>
     {
     }
 }

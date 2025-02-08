@@ -34,7 +34,7 @@ namespace SkylinesSmartHouseConsoleApp.Servisi
         public virtual TModel Update(int id,TUpdate update)
         {
             var index= _podaci.FindIndex(x=> GetId(x)==id);
-            if (index == null) return null;
+            if (index == -1) return null;
 
             TModel updateModel = UpdateModel(_podaci[index], update);
             SetId(updateModel,id);
