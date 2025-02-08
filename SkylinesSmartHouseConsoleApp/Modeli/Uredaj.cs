@@ -12,6 +12,7 @@ namespace SkylinesSmartHouseConsoleApp.Modeli
         public string Naziv { get; set; }
         public string Proizvodjac { get; set; }
         public string Model { get; set; }
+        public int SenzorId { get; set; }
         public Senzor Senzor { get; set; }
         public bool Ukljucen { get; set; }
     }
