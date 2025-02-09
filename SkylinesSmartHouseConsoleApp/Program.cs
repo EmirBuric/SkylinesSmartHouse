@@ -16,9 +16,11 @@ public class Program
         var service = new ServiceCollection();
 
         service.AddTransient<IKucaService, KucaService>();
+        service.AddTransient<IUredajService, UredajService>();
         service.AddTransient<ISenzorService, SenzorService>();
         service.AddTransient<ISobaService, SobaService>();
         service.AddTransient<KucaController>();
+        service.AddTransient<UredajController>();
         service.AddTransient<SenzorController>();
         service.AddTransient<SobaController>();
 
@@ -29,6 +31,7 @@ public class Program
         var kuca = scope.ServiceProvider.GetRequiredService<KucaController>();
         var soba = scope.ServiceProvider.GetRequiredService<SobaController>();
         var senzor = scope.ServiceProvider.GetRequiredService<SenzorController>();
+        var uredjaj = scope.ServiceProvider.GetRequiredService<UredajController>();
 
 
        
@@ -40,24 +43,28 @@ public class Program
         while(!exit)
         {
             Console.WriteLine("Odaberite opciju");
-            Console.WriteLine("1. Dodaj senzor");
+            Console.WriteLine("1. Dodaj uredjaj");
             Console.WriteLine("2. Pretraga");
-            Console.WriteLine("3. Azuriraj senzor");
-            Console.WriteLine("4. Izlaz");
+            Console.WriteLine("3. Azuriraj uredjaj");
+            Console.WriteLine("4. Ukljucite uredjaj");
+            Console.WriteLine("5. Izlaz");
             string opcija = Console.ReadLine();
 
             switch (opcija)
             {
                 case "1":
-                    senzor.Dodaj();
+                    uredjaj.Dodaj();
                     break;
                 case "2":
-                    senzor.Pretraga();
+                    uredjaj.Pretraga();
                     break;
                 case "3":
-                    senzor.Azuriraj();
+                    uredjaj.Azuriraj();
                     break;
                 case "4":
+                    uredjaj.UkljuciUredjaj();
+                    break;
+                case "5":
                     exit=true;
                     break;
                 default:
