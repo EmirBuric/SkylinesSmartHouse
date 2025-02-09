@@ -12,6 +12,6 @@ namespace SkylinesSmartHouseConsoleApp.Servisi
 {
     public interface IUredajService:IService<Uredaj,UredajPretraga,UredajDodaj,UredajAzuriraj>
     {
-        public void Ukljuci(int id);
+        public bool UpaliUgasi(int id);
     }
 }

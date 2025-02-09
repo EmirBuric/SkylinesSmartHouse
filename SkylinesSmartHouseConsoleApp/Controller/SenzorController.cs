@@ -83,5 +83,28 @@ namespace SkylinesSmartHouseConsoleApp.Controller
             _service.Update(Id, update);
             Console.WriteLine("Senzor je azuriran");
         }
+
+
+        public void UkljuciSenzor()
+        {
+            Console.WriteLine("Unesite Id senzora koji zelite ukljuciti/iskljuciti");
+            string unos = Console.ReadLine();
+            int Id;
+            while (!Int32.TryParse(unos, out Id))
+            {
+                Console.WriteLine("Molimo Vas da unesete Id");
+                unos = Console.ReadLine();
+            }
+            bool stanje = _service.UpaliUgasi(Id);
+            if (stanje)
+            {
+                Console.WriteLine("Senzor ukljucen");
+            }
+            else
+            {
+                Console.WriteLine("Senzor iskljucen");
+            }
+
+        }
     }
 }

@@ -12,6 +12,6 @@ namespace SkylinesSmartHouseConsoleApp.Servisi
 {
     public interface ISobaService:IService<Soba,SobaPretraga,SobaDodaj,SobaAzuriraj>
     {
-
+        
     }
 }

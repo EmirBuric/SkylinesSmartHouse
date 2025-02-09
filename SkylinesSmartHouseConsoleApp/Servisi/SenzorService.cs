@@ -31,5 +31,20 @@ namespace SkylinesSmartHouseConsoleApp.Servisi
             model.Naziv = update.Naziv;
             return model;
         }
+
+        public bool UpaliUgasi(int id)
+        {
+            var senzor = GetById(id);
+            if (senzor != null)
+            {
+                senzor.Ukljucen = !senzor.Ukljucen;
+            }
+            else
+            {
+                Console.WriteLine("Senzor nije pronadjen");
+                return false;
+            }
+            return senzor.Ukljucen;
+        }
     }
 }

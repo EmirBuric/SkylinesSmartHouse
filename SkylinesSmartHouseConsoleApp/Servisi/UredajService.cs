@@ -33,17 +33,19 @@ namespace SkylinesSmartHouseConsoleApp.Servisi
             model.Proizvodjac = update.Proizvodjac;
             return model;
         }
-        public void Ukljuci(int id)
+        public bool UpaliUgasi(int id)
         {
             var uredjaj = GetById(id);
             if (uredjaj != null)
             {
-                uredjaj.Ukljucen = true;
+                uredjaj.Ukljucen = !uredjaj.Ukljucen;
             }
             else 
             {
                 Console.WriteLine("Uredaj nije pronadjen");
+                return false;
             }
+            return uredjaj.Ukljucen;
         }
     }
 }

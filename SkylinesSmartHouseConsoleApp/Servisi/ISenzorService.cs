@@ -12,5 +12,6 @@ namespace SkylinesSmartHouseConsoleApp.Servisi
 {
     public interface ISenzorService:IService<Senzor,SenzorPretraga,SenzorDodaj,SenzorAzuriraj>
     {
+        public bool UpaliUgasi(int id);
     }
 }

@@ -120,7 +120,7 @@ namespace SkylinesSmartHouseConsoleApp.Controller
 
         public void UkljuciUredjaj()
         {
-            Console.WriteLine("Unesite Id uredjaja koji zelite ukljuciti");
+            Console.WriteLine("Unesite Id uredjaja koji zelite ukljuciti/iskljuciti");
             string unos = Console.ReadLine();
             int Id;
             while (!Int32.TryParse(unos, out Id))
@@ -128,8 +128,16 @@ namespace SkylinesSmartHouseConsoleApp.Controller
                 Console.WriteLine("Molimo Vas da unesete Id");
                 unos = Console.ReadLine();
             }
-            _service.Ukljuci(Id);
-            Console.WriteLine("Uredjaj ukljucen");
+            bool stanje = _service.UpaliUgasi(Id);
+            if (stanje) 
+            {
+                Console.WriteLine("Uredjaj ukljucen");
+            }
+            else
+            {
+                Console.WriteLine("Uredjaj iskljucen");
+            }
+            
         }
     }
 }
