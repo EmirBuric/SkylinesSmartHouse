@@ -55,7 +55,7 @@ namespace SkylinesSmartHouseConsoleApp.Controller
         public void Pretraga()
         {
             var pretraga = new UredajPretraga();
-            Console.WriteLine("Pretrazite Uredjaj po nazivu");
+            Console.WriteLine("Pretrazite Uredjaj");
             pretraga.Naziv = Console.ReadLine();
             while (string.IsNullOrEmpty(pretraga.Naziv))
             {
@@ -115,7 +115,7 @@ namespace SkylinesSmartHouseConsoleApp.Controller
 
 
             _service.Update(Id, update);
-            Console.WriteLine("Uredjaj je azurirana");
+            Console.WriteLine("Uredjaj je azuriran");
         }
 
         public void UkljuciUredjaj()

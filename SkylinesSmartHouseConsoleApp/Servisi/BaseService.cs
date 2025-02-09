@@ -20,7 +20,29 @@ namespace SkylinesSmartHouseConsoleApp.Servisi
 
         public virtual List<TModel> GetSearchRes(TSearch search)
         {
-            return _podaci;
+           if (string.IsNullOrEmpty(search.Naziv))
+               return _podaci;
+
+           var pretraga= new List<TModel>();
+            foreach (var item in _podaci)
+            {
+                var mogucaPretraga = item.GetType()
+                    .GetProperties()
+                    .Where(p => p.PropertyType == typeof(string))
+                    .ToList();
+
+                foreach (var item1 in mogucaPretraga)
+                {
+                    var check = item1.GetValue(item).ToString();
+
+                    if (!string.IsNullOrEmpty(check) && check.Contains(search.Naziv)) 
+                    {
+                        pretraga.Add(item);
+                        break;
+                    }
+                }
+            }
+            return pretraga;
         }
 
         public virtual TModel Insert(TInsert insert)

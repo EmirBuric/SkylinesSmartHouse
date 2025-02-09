@@ -72,7 +72,8 @@ public class Program
             }
         }
 
-        /*while(!exit)
+        exit = false;
+        while(!exit)
         {
             Console.WriteLine("Odaberite opciju");
             Console.WriteLine("1. Dodaj uredjaj");
@@ -103,7 +104,7 @@ public class Program
                     Console.WriteLine("Pogresan unos");
                     break;
             }
-        }*/
+        }
 
 
 
