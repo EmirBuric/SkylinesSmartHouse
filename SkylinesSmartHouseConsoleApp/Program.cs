@@ -16,13 +16,16 @@ public class Program
         var service = new ServiceCollection();
 
         service.AddTransient<IKucaService, KucaService>();
+        service.AddTransient<IUredajService, UredajService>();
         service.AddTransient<KucaController>();
+        service.AddTransient<UredajController>();
 
         var serviceProvider = service.BuildServiceProvider();
 
         var scope = serviceProvider.CreateScope();
 
         var kuca = scope.ServiceProvider.GetRequiredService<KucaController>();
+        var uredjaj = scope.ServiceProvider.GetRequiredService<UredajController>();
 
 
        
@@ -34,24 +37,28 @@ public class Program
         while(!exit)
         {
             Console.WriteLine("Odaberite opciju");
-            Console.WriteLine("1. Dodaj kucu");
+            Console.WriteLine("1. Dodaj uredjaj");
             Console.WriteLine("2. Pretraga");
-            Console.WriteLine("3. Azuriraj kucu");
-            Console.WriteLine("4. Izlaz");
+            Console.WriteLine("3. Azuriraj uredjaj");
+            Console.WriteLine("4. Ukljucite uredjaj");
+            Console.WriteLine("5. Izlaz");
             string opcija = Console.ReadLine();
 
             switch (opcija)
             {
                 case "1":
-                    kuca.Dodaj();
+                    uredjaj.Dodaj();
                     break;
                 case "2":
-                    kuca.Pretraga();
+                    uredjaj.Pretraga();
                     break;
                 case "3":
-                    kuca.Azuriraj();
+                    uredjaj.Azuriraj();
                     break;
                 case "4":
+                    uredjaj.UkljuciUredjaj();
+                    break;
+                case "5":
                     exit=true;
                     break;
                 default:
