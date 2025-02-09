@@ -2,6 +2,7 @@
 using SkylinesSmartHouseConsoleApp.Azuriraj;
 using SkylinesSmartHouseConsoleApp.Controller;
 using SkylinesSmartHouseConsoleApp.Dodaj;
+using SkylinesSmartHouseConsoleApp.Meniji;
 using SkylinesSmartHouseConsoleApp.Modeli;
 using SkylinesSmartHouseConsoleApp.Pretrazi;
 using SkylinesSmartHouseConsoleApp.Servisi;
@@ -44,151 +45,43 @@ public class Program
 
         korisnik.Dodaj();
 
-        bool exit=false;
 
+        bool exit = false;
 
         while (!exit)
         {
             Console.WriteLine("Odaberite opciju");
-            Console.WriteLine("1. Pogledaj profil");
-            Console.WriteLine("2. Azuriraj profil");
-            Console.WriteLine("3. Izlaz");
+            Console.WriteLine("1. Korisnik");
+            Console.WriteLine("2. Kuca");
+            Console.WriteLine("3. Soba");
+            Console.WriteLine("4. Senzor");
+            Console.WriteLine("5. Uredjaj");
+            Console.WriteLine("6. Izlaz");
             string opcija = Console.ReadLine();
 
             switch (opcija)
             {
                 case "1":
-                    korisnik.Info();
+                    var korisnikMenu = new KorisnikMenu(korisnik);
+                    korisnikMenu.PrikaziMeni();
                     break;
                 case "2":
-                    korisnik.Azuriraj();
+                    var kucaMenu = new KucaMenu(kuca);
+                    kucaMenu.PrikaziMeni();
                     break;
                 case "3":
-                    exit = true;
-                    break;
-                default:
-                    Console.WriteLine("Pogresan unos");
-                    break;
-            }
-        }
-
-        exit = false;
-        while (!exit)
-        {
-            Console.WriteLine("Odaberite opciju");
-            Console.WriteLine("1. Dodaj kucu");
-            Console.WriteLine("2. Pretraga");
-            Console.WriteLine("3. Azuriraj Kucu");
-            Console.WriteLine("4. Izlaz");
-            string opcija = Console.ReadLine();
-
-            switch (opcija)
-            {
-                case "1":
-                    kuca.Dodaj();
-                    break;
-                case "2":
-                    kuca.Pretraga();
-                    break;
-                case "3":
-                    kuca.Azuriraj();
+                    var sobaMenu = new SobaMenu(soba);
+                    sobaMenu.PrikaziMeni();
                     break;
                 case "4":
-                    exit = true;
-                    break;
-                default:
-                    Console.WriteLine("Pogresan unos");
-                    break;
-            }
-        }
-        exit = false;
-        while (!exit)
-        {
-            Console.WriteLine("Odaberite opciju");
-            Console.WriteLine("1. Dodaj sobu");
-            Console.WriteLine("2. Pretraga");
-            Console.WriteLine("3. Azuriraj sobu");
-            Console.WriteLine("4. Izlaz");
-            string opcija = Console.ReadLine();
-
-            switch (opcija)
-            {
-                case "1":
-                    soba.Dodaj();
-                    break;
-                case "2":
-                    soba.Pretraga();
-                    break;
-                case "3":
-                    soba.Azuriraj();
-                    break;
-                case "4":
-                    exit = true;
-                    break;
-                default:
-                    Console.WriteLine("Pogresan unos");
-                    break;
-            }
-        }
-        exit = false;
-        while(!exit)
-        {
-            Console.WriteLine("Odaberite opciju");
-            Console.WriteLine("1. Dodaj senzor");
-            Console.WriteLine("2. Pretraga");
-            Console.WriteLine("3. Azuriraj senzor");
-            Console.WriteLine("4. Upali/ugasi senzor");
-            Console.WriteLine("5. Izlaz");
-            string opcija = Console.ReadLine();
-
-            switch (opcija)
-            {
-                case "1":
-                    senzor.Dodaj();
-                    break;
-                case "2":
-                    senzor.Pretraga();
-                    break;
-                case "3":
-                    senzor.Azuriraj();
-                    break;
-                case "4":
-                    senzor.UkljuciSenzor();
+                    var senzorMenu = new SenzorMenu(senzor);
+                    senzorMenu.PrikaziMeni();
                     break;
                 case "5":
-                    exit=true;
+                    var uredjajMenu = new UredajMenu(uredjaj);
+                    uredjajMenu.PrikaziMeni();
                     break;
-                default:
-                    Console.WriteLine("Pogresan unos");
-                    break;
-            }
-        }
-        exit = false;
-        while (!exit)
-        {
-            Console.WriteLine("Odaberite opciju");
-            Console.WriteLine("1. Dodaj uredjaj");
-            Console.WriteLine("2. Pretraga");
-            Console.WriteLine("3. Azuriraj uredjaj");
-            Console.WriteLine("4. Upali/ugasi uredjaj");
-            Console.WriteLine("5. Izlaz");
-            string opcija = Console.ReadLine();
-
-            switch (opcija)
-            {
-                case "1":
-                    uredjaj.Dodaj();
-                    break;
-                case "2":
-                    uredjaj.Pretraga();
-                    break;
-                case "3":
-                    uredjaj.Azuriraj();
-                    break;
-                case "4":
-                    uredjaj.UkljuciUredjaj();
-                    break;
-                case "5":
+                case "6":
                     exit = true;
                     break;
                 default:
@@ -196,9 +89,9 @@ public class Program
                     break;
             }
         }
-
-
-
-
     }
+
+
+
+
 }

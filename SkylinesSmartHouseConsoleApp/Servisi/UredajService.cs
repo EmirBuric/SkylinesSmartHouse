@@ -29,7 +29,7 @@ namespace SkylinesSmartHouseConsoleApp.Servisi
                 Model=insert.Model, 
                 Proizvodjac=insert.Proizvodjac,
                 SobaId=insert.SobaId,
-                SenzorId=insert.SenzorId,
+                SenzorId=insert.SenzorId
             };
         }
         protected override Uredaj UpdateModel(Uredaj model, UredajAzuriraj? update)
