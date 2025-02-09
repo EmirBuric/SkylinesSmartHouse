@@ -47,6 +47,24 @@ namespace SkylinesSmartHouseConsoleApp.Controller
                 dodaj.Model = Console.ReadLine();
             }
 
+            Console.WriteLine("Unesite Id sobe kojoj uredjaj pripada, ukoliko imate samo jednu sobu unesite 1");
+            string unosId = Console.ReadLine();
+            int id;
+            while (!Int32.TryParse(unosId, out id))
+            {
+                Console.WriteLine("Molimo Vas da unesete id");
+                unosId = Console.ReadLine();
+            }
+            dodaj.SobaId = id;
+            Console.WriteLine("Unesite Id senzora s kojim zelite spojiti uredjaj, ukoliko imate samo jedan senzor unesite 1");
+            string unosSenId = Console.ReadLine();
+            int Senid;
+            while (!Int32.TryParse(unosSenId, out Senid))
+            {
+                Console.WriteLine("Molimo Vas da unesete id");
+                unosSenId = Console.ReadLine();
+            }
+            dodaj.SenzorId = Senid;
 
             _service.Insert(dodaj);
             Console.WriteLine("Uredjaj dodan");
@@ -72,7 +90,10 @@ namespace SkylinesSmartHouseConsoleApp.Controller
                     $" proizvodjac:{uredjaj.Proizvodjac}," +
                     $"model:{uredjaj.Model}, " +
                     $"ukljucen:{uredjaj.Ukljucen}," +
-                    $" Id:{uredjaj.Id}");
+                    $" Id:{uredjaj.Id}, "+
+                    $"SobaId: {uredjaj.SobaId}, "+
+                    $"SenzorId: {uredjaj.SenzorId}"
+                    );
             }
             Console.WriteLine("Pretraga zavrsena");
         }

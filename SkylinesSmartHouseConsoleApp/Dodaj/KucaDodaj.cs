@@ -9,5 +9,6 @@ namespace SkylinesSmartHouseConsoleApp.Dodaj
     public class KucaDodaj:BaseDodaj
     {
         public int Povrsina { get; set; }
+        public int KorisnikId { get; set; }
     }
 }

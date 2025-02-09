@@ -32,6 +32,15 @@ namespace SkylinesSmartHouseConsoleApp.Controller
                 dodaj.Naziv = Console.ReadLine();
             }
 
+            Console.WriteLine("Unesite Id sobe kojoj senzor pripada, ukoliko imate samo jednu sobu unesite 1");
+            string unosId = Console.ReadLine();
+            int id;
+            while (!Int32.TryParse(unosId, out id))
+            {
+                Console.WriteLine("Molimo Vas da unesete id");
+                unosId = Console.ReadLine();
+            }
+            dodaj.SobaId = id;
             _service.Insert(dodaj);
             Console.WriteLine("Senzor dodan");
         }

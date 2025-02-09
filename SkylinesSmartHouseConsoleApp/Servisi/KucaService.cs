@@ -19,7 +19,7 @@ namespace SkylinesSmartHouseConsoleApp.Servisi
 
         protected override Kuca PrebaciUModel(KucaDodaj insert)
         {
-            return new Kuca {Naziv=insert.Naziv,Povrsina=insert.Povrsina };
+            return new Kuca {Naziv=insert.Naziv,Povrsina=insert.Povrsina, KorisnikId=insert.KorisnikId };
         }
         protected override Kuca UpdateModel(Kuca model, KucaAzuriraj? update)
         {

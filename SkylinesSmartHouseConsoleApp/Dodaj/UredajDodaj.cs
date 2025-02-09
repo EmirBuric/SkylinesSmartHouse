@@ -10,5 +10,7 @@ namespace SkylinesSmartHouseConsoleApp.Dodaj
     {
         public string Proizvodjac { get; set; }
         public string Model { get; set; }
+        public int SobaId { get; set; }
+        public int SenzorId { get; set; }
     }
 }

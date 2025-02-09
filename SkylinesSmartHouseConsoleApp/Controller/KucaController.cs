@@ -41,8 +41,8 @@ namespace SkylinesSmartHouseConsoleApp.Controller
                 unos = Console.ReadLine();
             }
             dodajKucu.Povrsina = temp;
-
-            _kucaService.Insert(dodajKucu);
+            dodajKucu.KorisnikId = 1;
+            _kucaService.Insert(dodajKucu); 
             Console.WriteLine("Kuca dodana");
         }
 

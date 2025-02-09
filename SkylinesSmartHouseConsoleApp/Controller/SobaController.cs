@@ -41,8 +41,19 @@ namespace SkylinesSmartHouseConsoleApp.Controller
             }
             dodajSobu.Povrsina = temp;
 
+            Console.WriteLine("Unesite Id kuce kojoj soba pripada, ukoliko imate samo jednu kucu unesite 1");
+            string unosId= Console.ReadLine();
+            int id;
+            while (!Int32.TryParse(unosId, out id))
+            {
+                Console.WriteLine("Molimo Vas da unesete id");
+                unosId = Console.ReadLine();
+            }
+            dodajSobu.KucaId = id;
+
             _service.Insert(dodajSobu);
             Console.WriteLine("Soba dodana");
+
         }
 
         public void Pretraga()

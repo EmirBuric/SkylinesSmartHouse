@@ -24,7 +24,7 @@ namespace SkylinesSmartHouseConsoleApp.Servisi
 
         protected override Soba PrebaciUModel(SobaDodaj insert)
         {
-            return new Soba { Naziv = insert.Naziv, Povrsina = insert.Povrsina };
+            return new Soba { Naziv = insert.Naziv, Povrsina = insert.Povrsina,KucaId=insert.KucaId };
         }
         protected override Soba UpdateModel(Soba model, SobaAzuriraj? update)
         {

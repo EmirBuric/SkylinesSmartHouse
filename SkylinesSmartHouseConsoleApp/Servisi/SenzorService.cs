@@ -24,7 +24,7 @@ namespace SkylinesSmartHouseConsoleApp.Servisi
 
         protected override Senzor PrebaciUModel(SenzorDodaj insert)
         {
-            return new Senzor { Naziv = insert.Naziv};
+            return new Senzor { Naziv = insert.Naziv,SobaId=insert.SobaId};
         }
         protected override Senzor UpdateModel(Senzor model, SenzorAzuriraj? update)
         {

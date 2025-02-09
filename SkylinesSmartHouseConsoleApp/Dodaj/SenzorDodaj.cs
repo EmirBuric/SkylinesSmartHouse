@@ -8,5 +8,6 @@ namespace SkylinesSmartHouseConsoleApp.Dodaj
 {
     public class SenzorDodaj:BaseDodaj
     {
+        public int SobaId { get; set; }
     }
 }

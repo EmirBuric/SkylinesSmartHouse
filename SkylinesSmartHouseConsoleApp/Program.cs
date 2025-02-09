@@ -73,13 +73,104 @@ public class Program
         }
 
         exit = false;
+        while (!exit)
+        {
+            Console.WriteLine("Odaberite opciju");
+            Console.WriteLine("1. Dodaj kucu");
+            Console.WriteLine("2. Pretraga");
+            Console.WriteLine("3. Azuriraj Kucu");
+            Console.WriteLine("4. Izlaz");
+            string opcija = Console.ReadLine();
+
+            switch (opcija)
+            {
+                case "1":
+                    kuca.Dodaj();
+                    break;
+                case "2":
+                    kuca.Pretraga();
+                    break;
+                case "3":
+                    kuca.Azuriraj();
+                    break;
+                case "4":
+                    exit = true;
+                    break;
+                default:
+                    Console.WriteLine("Pogresan unos");
+                    break;
+            }
+        }
+        exit = false;
+        while (!exit)
+        {
+            Console.WriteLine("Odaberite opciju");
+            Console.WriteLine("1. Dodaj sobu");
+            Console.WriteLine("2. Pretraga");
+            Console.WriteLine("3. Azuriraj sobu");
+            Console.WriteLine("4. Izlaz");
+            string opcija = Console.ReadLine();
+
+            switch (opcija)
+            {
+                case "1":
+                    soba.Dodaj();
+                    break;
+                case "2":
+                    soba.Pretraga();
+                    break;
+                case "3":
+                    soba.Azuriraj();
+                    break;
+                case "4":
+                    exit = true;
+                    break;
+                default:
+                    Console.WriteLine("Pogresan unos");
+                    break;
+            }
+        }
+        exit = false;
         while(!exit)
+        {
+            Console.WriteLine("Odaberite opciju");
+            Console.WriteLine("1. Dodaj senzor");
+            Console.WriteLine("2. Pretraga");
+            Console.WriteLine("3. Azuriraj senzor");
+            Console.WriteLine("4. Upali/ugasi senzor");
+            Console.WriteLine("5. Izlaz");
+            string opcija = Console.ReadLine();
+
+            switch (opcija)
+            {
+                case "1":
+                    senzor.Dodaj();
+                    break;
+                case "2":
+                    senzor.Pretraga();
+                    break;
+                case "3":
+                    senzor.Azuriraj();
+                    break;
+                case "4":
+                    senzor.UkljuciSenzor();
+                    break;
+                case "5":
+                    exit=true;
+                    break;
+                default:
+                    Console.WriteLine("Pogresan unos");
+                    break;
+            }
+        }
+        exit = false;
+        while (!exit)
         {
             Console.WriteLine("Odaberite opciju");
             Console.WriteLine("1. Dodaj uredjaj");
             Console.WriteLine("2. Pretraga");
             Console.WriteLine("3. Azuriraj uredjaj");
-            Console.WriteLine("4. Ukljucite uredjaj");
+            Console.WriteLine("4. Upali/ugasi uredjaj");
             Console.WriteLine("5. Izlaz");
             string opcija = Console.ReadLine();
 
@@ -98,13 +189,14 @@ public class Program
                     uredjaj.UkljuciUredjaj();
                     break;
                 case "5":
-                    exit=true;
+                    exit = true;
                     break;
                 default:
                     Console.WriteLine("Pogresan unos");
                     break;
             }
         }
+
 
 
 

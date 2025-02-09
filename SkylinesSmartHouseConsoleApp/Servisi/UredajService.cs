@@ -24,7 +24,13 @@ namespace SkylinesSmartHouseConsoleApp.Servisi
 
         protected override Uredaj PrebaciUModel(UredajDodaj insert)
         {
-            return new Uredaj { Naziv = insert.Naziv, Model=insert.Model, Proizvodjac=insert.Proizvodjac };
+            return new Uredaj { 
+                Naziv = insert.Naziv, 
+                Model=insert.Model, 
+                Proizvodjac=insert.Proizvodjac,
+                SobaId=insert.SobaId,
+                SenzorId=insert.SenzorId,
+            };
         }
         protected override Uredaj UpdateModel(Uredaj model, UredajAzuriraj? update)
         {
