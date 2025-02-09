@@ -11,5 +11,7 @@ namespace SkylinesSmartHouseConsoleApp.Modeli
     {
         public int Id { get; set; }
         public string Naziv { get; set; }
+        public bool Ukljucen { get; set; }= false;
+        public int SobaId { get; set; }
     }
 }
