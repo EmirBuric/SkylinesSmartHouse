@@ -26,6 +26,7 @@ public class Program
         service.AddTransient<SenzorController>();
         service.AddTransient<SobaController>();
         service.AddTransient<KorisnikController>();
+        service.AddTransient<GlavniMeni>();
 
         var serviceProvider = service.BuildServiceProvider();
 
@@ -36,59 +37,12 @@ public class Program
         var senzor = scope.ServiceProvider.GetRequiredService<SenzorController>();
         var uredjaj = scope.ServiceProvider.GetRequiredService<UredajController>();
         var korisnik = scope.ServiceProvider.GetRequiredService<KorisnikController>();
+        var meni = scope.ServiceProvider.GetRequiredService<GlavniMeni>();
 
 
+        meni.Prikazi();
 
-
-        Console.WriteLine("Dobro dosli u SmartHome");
-        Console.WriteLine("Registrujte Vaš račun");
-
-        korisnik.Dodaj();
-
-
-        bool exit = false;
-
-        while (!exit)
-        {
-            Console.WriteLine("Odaberite opciju");
-            Console.WriteLine("1. Korisnik");
-            Console.WriteLine("2. Kuca");
-            Console.WriteLine("3. Soba");
-            Console.WriteLine("4. Senzor");
-            Console.WriteLine("5. Uredjaj");
-            Console.WriteLine("6. Izlaz");
-            string opcija = Console.ReadLine();
-
-            switch (opcija)
-            {
-                case "1":
-                    var korisnikMenu = new KorisnikMenu(korisnik);
-                    korisnikMenu.PrikaziMeni();
-                    break;
-                case "2":
-                    var kucaMenu = new KucaMenu(kuca);
-                    kucaMenu.PrikaziMeni();
-                    break;
-                case "3":
-                    var sobaMenu = new SobaMenu(soba);
-                    sobaMenu.PrikaziMeni();
-                    break;
-                case "4":
-                    var senzorMenu = new SenzorMenu(senzor);
-                    senzorMenu.PrikaziMeni();
-                    break;
-                case "5":
-                    var uredjajMenu = new UredajMenu(uredjaj);
-                    uredjajMenu.PrikaziMeni();
-                    break;
-                case "6":
-                    exit = true;
-                    break;
-                default:
-                    Console.WriteLine("Pogresan unos");
-                    break;
-            }
-        }
+       
     }
 
 
