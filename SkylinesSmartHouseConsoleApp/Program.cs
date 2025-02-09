@@ -16,13 +16,16 @@ public class Program
         var service = new ServiceCollection();
 
         service.AddTransient<IKucaService, KucaService>();
+        service.AddTransient<ISenzorService, SenzorService>();
         service.AddTransient<KucaController>();
+        service.AddTransient<SenzorController>();
 
         var serviceProvider = service.BuildServiceProvider();
 
         var scope = serviceProvider.CreateScope();
 
         var kuca = scope.ServiceProvider.GetRequiredService<KucaController>();
+        var senzor = scope.ServiceProvider.GetRequiredService<SenzorController>();
 
 
        
@@ -34,22 +37,22 @@ public class Program
         while(!exit)
         {
             Console.WriteLine("Odaberite opciju");
-            Console.WriteLine("1. Dodaj kucu");
+            Console.WriteLine("1. Dodaj senzor");
             Console.WriteLine("2. Pretraga");
-            Console.WriteLine("3. Azuriraj kucu");
+            Console.WriteLine("3. Azuriraj senzor");
             Console.WriteLine("4. Izlaz");
             string opcija = Console.ReadLine();
 
             switch (opcija)
             {
                 case "1":
-                    kuca.Dodaj();
+                    senzor.Dodaj();
                     break;
                 case "2":
-                    kuca.Pretraga();
+                    senzor.Pretraga();
                     break;
                 case "3":
-                    kuca.Azuriraj();
+                    senzor.Azuriraj();
                     break;
                 case "4":
                     exit=true;
