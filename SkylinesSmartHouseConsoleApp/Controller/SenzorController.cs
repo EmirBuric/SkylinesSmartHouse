@@ -50,11 +50,6 @@ namespace SkylinesSmartHouseConsoleApp.Controller
             var pretraga = new SenzorPretraga();
             Console.WriteLine("Pretrazite senzore po nazivu");
             pretraga.Naziv = Console.ReadLine();
-            while (string.IsNullOrEmpty(pretraga.Naziv))
-            {
-                Console.WriteLine("Molimo Vas da unesete naziv");
-                pretraga.Naziv = Console.ReadLine();
-            }
 
 
             var senzori = _service.GetSearchRes(pretraga);

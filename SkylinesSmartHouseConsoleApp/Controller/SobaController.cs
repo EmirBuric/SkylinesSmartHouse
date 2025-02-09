@@ -61,11 +61,6 @@ namespace SkylinesSmartHouseConsoleApp.Controller
             var pretraga = new SobaPretraga();
             Console.WriteLine("Pretrazite sobe po nazivu");
             pretraga.Naziv = Console.ReadLine();
-            while (string.IsNullOrEmpty(pretraga.Naziv))
-            {
-                Console.WriteLine("Molimo Vas da unesete naziv");
-                pretraga.Naziv = Console.ReadLine();
-            }
 
 
             var sobe = _service.GetSearchRes(pretraga);
