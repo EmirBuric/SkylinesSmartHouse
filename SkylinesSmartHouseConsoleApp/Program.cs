@@ -19,10 +19,12 @@ public class Program
         service.AddTransient<IUredajService, UredajService>();
         service.AddTransient<ISenzorService, SenzorService>();
         service.AddTransient<ISobaService, SobaService>();
+        service.AddTransient<IKorisnikService, KorisnikService>();
         service.AddTransient<KucaController>();
         service.AddTransient<UredajController>();
         service.AddTransient<SenzorController>();
         service.AddTransient<SobaController>();
+        service.AddTransient<KorisnikController>();
 
         var serviceProvider = service.BuildServiceProvider();
 
@@ -32,15 +34,45 @@ public class Program
         var soba = scope.ServiceProvider.GetRequiredService<SobaController>();
         var senzor = scope.ServiceProvider.GetRequiredService<SenzorController>();
         var uredjaj = scope.ServiceProvider.GetRequiredService<UredajController>();
+        var korisnik = scope.ServiceProvider.GetRequiredService<KorisnikController>();
 
 
-       
 
-       
+
+        Console.WriteLine("Dobro dosli u SmartHome");
+        Console.WriteLine("Registrujte Vaš račun");
+
+        korisnik.Dodaj();
 
         bool exit=false;
 
-        while(!exit)
+
+        while (!exit)
+        {
+            Console.WriteLine("Odaberite opciju");
+            Console.WriteLine("1. Pogledaj profil");
+            Console.WriteLine("2. Azuriraj profil");
+            Console.WriteLine("3. Izlaz");
+            string opcija = Console.ReadLine();
+
+            switch (opcija)
+            {
+                case "1":
+                    korisnik.Info();
+                    break;
+                case "2":
+                    korisnik.Azuriraj();
+                    break;
+                case "3":
+                    exit = true;
+                    break;
+                default:
+                    Console.WriteLine("Pogresan unos");
+                    break;
+            }
+        }
+
+        /*while(!exit)
         {
             Console.WriteLine("Odaberite opciju");
             Console.WriteLine("1. Dodaj uredjaj");
@@ -71,9 +103,9 @@ public class Program
                     Console.WriteLine("Pogresan unos");
                     break;
             }
-        }
+        }*/
 
-        
+
 
     }
 }
